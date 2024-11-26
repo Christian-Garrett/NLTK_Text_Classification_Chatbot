@@ -59,10 +59,10 @@ def extract_features(text):
     return result
 
 
-def get_model_training_components(self):
+def get_model_training_resources(self):
 
     corpus_update = [] # the corpus of lemmatized words
-    training_example_update = [] # category match supervised learning example
+    training_example_update = [] # category match supervised learning examples
     answer_dict_update = {}  # responses from the chat bot
     for (text, category, answer) in self.input_text_data:
 

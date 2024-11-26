@@ -15,17 +15,28 @@ def chatbot_response(responses, dtclassifier, input_sentence):
 
     return responses.item()[category]
 
-##### todo: add in dynamic paths
-response_dict = np.load('answer_dictionary.npy', allow_pickle=True)
-loaded_model = pickle.load(open('working_dt_model.sav', 'rb'))
 
-##### todo: use the input function to get user question and create a processing loop
-Question = 'How many annual leaves do I have left?'
+def load_chatbot():
 
-''' Remove:
-# Question = 'How many annual leaves do I have left?'
-# print(Question)
-# '''
-print(chatbot_response(response_dict, loaded_model, Question))
+    response_dict_path = os.path.join(module_path, "Output/answer_dictionary.npy")
+    response_dict = np.load(response_dict_path, allow_pickle=True)
 
-##### todo: add in main code guard
+    nltk_model_path = os.path.join(module_path, "Output/working_dt_model.sav")
+    chatbot_model = pickle.load(open(nltk_model_path, 'rb'))
+
+    return response_dict, chatbot_model
+
+def run_chatbot(answer_key, chat_mod):
+
+    while True:
+        user_input = input("Enter your question (type 'exit' to quit): ")
+        if user_input.lower() == 'exit': 
+            print("Goodbye!") 
+            break
+        else:
+            print(chatbot_response(answer_key, chat_mod, user_input))
+
+
+if __name__ == '__main__':
+    answers, model = load_chatbot()
+    run_chatbot(answers, model)

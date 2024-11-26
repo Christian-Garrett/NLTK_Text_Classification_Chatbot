@@ -4,32 +4,58 @@ import os
 import pandas as pd
 import numpy as np
 
-
 module_path = Path(__file__).parents[1]
 sys.path.append(str(module_path))
 
-##### todo: add class documentation 
 
 class BuildDataset:
+    """
+    A class used to create the chatbot training resources from
+    the input data.
+    ...
+
+    Attributes
+    ----------
+    output_path : str
+        Chatbot model output data text path
+    input_path : str
+        Chatbot model input data text path
+    input_text_data : df
+        Chatbot input data
+    training_examples : 2D list
+        List of response categories and keyword triggers
+    corpus_list : list 
+        List of all of the processed words from the input file
+    answer_dict : dict
+        Dictionary containing chatbot responses
+
+    Methods
+    -------
+    preprocess_data()
+        Load data, set index, change formats, visual sanity checks.
+    save_processed_data()
+        Save the train and test data.
+
+    """
 
     from MLPipeline.LoadData import get_text_data
-    from MLPipeline.ExtractFeatures import get_model_training_components
-    from MLPipeline.SaveData import save_model_training_components
+    from MLPipeline.ExtractFeatures import get_model_training_resources
+    from MLPipeline.SaveData import save_model_training_resources
 
-    def __init__(self, filename, output_path="Output/"):
+    def __init__(self, input_path, output_path="Output/"):
 
         self.output_path=os.path.join(module_path, output_path)
-        self.filename=filename
-        self.input_text_data=self.get_text_data(filename)
+        self.input_path=input_path
+        self.input_text_data=self.get_text_data(input_path)
         self.training_examples=None
         self.corpus_list=None
         self.answer_dict=None
 
     def preprocess_data(self):
-        self.get_model_training_components()
+        self.get_model_training_resources()
 
     def save_processed_data(self):
-        self.save_model_training_components()
+        self.save_model_training_resources()
 
 
 class TrainModels:

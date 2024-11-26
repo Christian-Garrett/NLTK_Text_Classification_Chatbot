@@ -26,6 +26,7 @@ def load_chatbot():
 
     return response_dict, chatbot_model
 
+
 def run_chatbot(answer_key, chat_mod):
 
     while True:

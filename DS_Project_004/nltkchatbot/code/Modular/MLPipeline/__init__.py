@@ -76,21 +76,21 @@ class TrainModels:
         Chatbot model training data
     test_data : list 
         Chatbot model test data
-    dtclassifier : dict
+    dtclassifier : _
         Trained Decision Tree classification model
-    dtclassifier_name : dict
+    dtclassifier_name : str
         Decision Tree model name
-    dttest_set_accuracy : dict
+    dttest_set_accuracy : float
         Decision Tree model test set accuracy
-    dttraining_set_accuracy : dict
+    dttraining_set_accuracy : float
         Decision Tree model training set accuracy
-    nbclassifier : dict
+    nbclassifier : _
         Trained Naive Bayes classification model
-    nbclassifier_name : dict
+    nbclassifier_name : str
         Trained Naive Bayes classification model name
-    nbtest_set_accuracy : dict
+    nbtest_set_accuracy : float
         Decision Tree model test set accuracy
-    nbtraining_set_accuracy : dict
+    nbtraining_set_accuracy : float
         Decision Tree model training set accuracy
 
     Methods

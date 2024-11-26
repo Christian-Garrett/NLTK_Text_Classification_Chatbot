@@ -17,9 +17,9 @@ class BuildDataset:
     Attributes
     ----------
     output_path : str
-        Chatbot model output data text path
+        Chatbot model data output text path
     input_path : str
-        Chatbot model input data text path
+        Chatbot model data input text path
     input_text_data : df
         Chatbot input data
     training_examples : 2D list
@@ -59,7 +59,50 @@ class BuildDataset:
 
 
 class TrainModels:
+    """
+    Compare Decision Tree and Naive Bayes models and save the
+    trained model.
+    ...
 
+    Attributes
+    ----------
+    output_path : str
+        Chatbot model data output  text path
+    training_data_path : str
+        Chatbot model training data input text path
+    test_data_path : str
+        Chatbot model test data input text path
+    training_data : 2D list
+        Chatbot model training data
+    test_data : list 
+        Chatbot model test data
+    dtclassifier : dict
+        Trained Decision Tree classification model
+    dtclassifier_name : dict
+        Decision Tree model name
+    dttest_set_accuracy : dict
+        Decision Tree model test set accuracy
+    dttraining_set_accuracy : dict
+        Decision Tree model training set accuracy
+    nbclassifier : dict
+        Trained Naive Bayes classification model
+    nbclassifier_name : dict
+        Trained Naive Bayes classification model name
+    nbtest_set_accuracy : dict
+        Decision Tree model test set accuracy
+    nbtraining_set_accuracy : dict
+        Decision Tree model training set accuracy
+
+    Methods
+    -------
+    train_decision_tree_model()
+        Train an NLTK decision tree classifier model
+    train_naive_bayes_model()
+        Train a Naive Bayes classifier model
+    save_chatbot_model()
+        Save the best performing model
+
+    """
     from MLPipeline.DecisionTree import set_dtmodel_parameters
     from MLPipeline.NaiveBayes import set_nbmodel_parameters
     from MLPipeline.SaveData import save_chatbot_model
